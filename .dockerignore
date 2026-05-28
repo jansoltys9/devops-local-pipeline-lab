@@ -1,0 +1,15 @@
+# Git metadata is not needed inside the Docker build context
+.git
+.gitignore
+
+# Documentation and CI files are not needed in the final build context
+README.md
+.gitlab-ci.yml
+.github
+
+# Kubernetes manifests are not needed to build the application image
+k8s
+
+# Temporary files and logs
+tmp
+*.log
