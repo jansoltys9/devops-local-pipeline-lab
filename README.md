@@ -105,3 +105,13 @@ This project demonstrates a simple production-style service lifecycle:
 5. Docker healthcheck
 6. CI pipeline validation
 7. Foundation for future Kubernetes deployment
+
+
+## CI/CD
+
+This project includes two CI examples:
+
+- GitHub Actions workflow in `.github/workflows/ci.yml`
+- GitLab CI pipeline in `.gitlab-ci.yml`
+
+Both pipelines validate the service by running Go tests and building the Docker image.
