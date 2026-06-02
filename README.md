@@ -94,6 +94,8 @@ Pipeline stages:
 1. `test`
 2. `docker-build`
 
+
+
 ## DevOps purpose
 
 This project demonstrates a simple production-style service lifecycle:
@@ -115,3 +117,28 @@ This project includes two CI examples:
 - GitLab CI pipeline in `.gitlab-ci.yml`
 
 Both pipelines validate the service by running Go tests and building the Docker image.
+
+## Architecture and delivery flow
+
+```mermaid
+flowchart LR
+    DEV[Developer] --> GIT[Git push]
+    GIT --> CI[CI pipeline]
+
+    CI --> TEST[Go tests]
+    TEST --> BUILD[Docker build]
+    BUILD --> SCAN[Trivy security scan]
+    SCAN --> READY[Image ready for deployment]
+
+    READY --> K8S[Kubernetes manifests]
+    K8S --> HELM[Reusable Helm chart]
+```
+
+This lab demonstrates a basic reusable microservice delivery workflow:
+
+1. Developer pushes code.
+2. CI runs Go tests.
+3. CI builds the Docker image.
+4. Trivy scans the image for vulnerabilities.
+5. Kubernetes manifests define how the service runs.
+6. Helm turns the manifests into a reusable deployment template.
