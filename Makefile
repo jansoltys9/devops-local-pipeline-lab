@@ -25,3 +25,9 @@ docker-stop:
 
 clean:
 	docker rmi $(IMAGE_NAME):$(IMAGE_TAG) || true
+
+helm-lint:
+	helm lint charts/microservice
+
+helm-template:
+	helm template devops-local-pipeline-lab charts/microservice
