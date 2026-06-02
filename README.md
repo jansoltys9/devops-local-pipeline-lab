@@ -185,3 +185,6 @@ charts/microservice/
 ├── Chart.yaml
 ├── values.yaml
 └── templates/
+
+- Trivy image scanning in GitHub Actions and GitLab CI
+- Security scan currently runs in report-only mode using `--exit-code 0`
