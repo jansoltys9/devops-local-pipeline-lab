@@ -1,6 +1,7 @@
 stages:
   - test
   - docker-build
+  - helm-validate
 
 variables:
   IMAGE_NAME: "devops-local-pipeline-lab"
@@ -22,3 +23,12 @@ docker-build:
   script:
     - docker version
     - docker build -t "$IMAGE_NAME:$CI_COMMIT_SHORT_SHA" .
+
+helm-validate:
+  stage: helm-validate
+  image:
+    name: alpine/helm:3.16.4
+    entrypoint: [""]
+  script:
+    - helm lint charts/microservice
+    - helm template devops-local-pipeline-lab charts/microservice
