@@ -28,6 +28,33 @@ devops-local-pipeline-lab/
 └── README.md
 ```
 
+## Current project status
+
+The lab currently demonstrates a reusable microservice delivery workflow:
+
+- Go HTTP service with `/`, `/health`, `/ready` and `/version` endpoints
+- Go unit test using `httptest`
+- Multi-stage Docker build
+- Non-root container runtime
+- Docker healthcheck
+- Local developer workflow via Makefile
+- GitHub Actions CI validation
+- GitLab CI validation
+- Kubernetes Deployment and Service manifests
+- Reusable Helm chart template
+- Helm chart lint and template rendering in CI
+
+Current validated flow:
+
+```text
+code
+  -> go test
+  -> docker build
+  -> Kubernetes manifest definition
+  -> Helm lint
+  -> Helm template render
+
+
 ## Run locally
 
 ```bash
@@ -142,3 +169,19 @@ This lab demonstrates a basic reusable microservice delivery workflow:
 4. Trivy scans the image for vulnerabilities.
 5. Kubernetes manifests define how the service runs.
 6. Helm turns the manifests into a reusable deployment template.
+
+
+```md
+## Kubernetes and Helm
+
+Static Kubernetes manifests are available under:
+
+```text
+k8s/
+├── deployment.yaml
+└── service.yaml
+
+charts/microservice/
+├── Chart.yaml
+├── values.yaml
+└── templates/
